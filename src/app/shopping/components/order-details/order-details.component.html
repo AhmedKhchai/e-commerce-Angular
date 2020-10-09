@@ -1,0 +1,82 @@
+<!-- <div *ngIf="orders$ | async as cart">
+  <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
+</div> -->
+<!-- <div *ngIf="orders$ | async as orders">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Order Summary</h5>
+      <p class="card-text" *ngIf="orders.totalItemsCount">
+        You have {{ orders.totalItemsCount }} items in you shopping orders !
+      </p>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let item of orders.items" class="list-group-item">
+          {{ item.quantity }} x {{ item.product.title }}
+          <div class="float-right">
+            {{ item.totalPrice | currency: "USD":true }}
+          </div>
+        </li>
+        <li class="list-group-item font-weight-bold">
+          Total
+          <div class="float-right">
+            {{ orders.totalPrice | currency: "USD":true }}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<h1>Orders</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>product title</th>
+      <th>quantity</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- <td>{{ items.product.title }}</td>
+      <td>{{ items.quantity }}</td> -->
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of orders$ | async">
+      <td>{{ p.shipping.name }}</td>
+      <td>{{ p.shipping.addressLine1 }}</td>
+      <td>{{ p.shipping.addressLine2 }}</td>
+      <td>{{ p.shipping.city }}</td>
+      <td>{{ p.datePlaced | date }}</td>
+      <td>
+        <a [routerLink]="['/admin/orders/' + p.key]"> View</a>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+<!-- 
+<input
+  #title="ngModel"
+  [(ngModel)]="order.netPrice"
+  name="title"
+  id="title"
+  type="text"
+  class="form-control"
+  required
+/> -->

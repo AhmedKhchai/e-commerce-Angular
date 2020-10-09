@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-3 mb-3">
+    <input
+      #query
+      (keyup)="filter(query.value)"
+      type="text"
+      class="form-control mb-3"
+      placeholder="Search..."
+    />
+    <app-product-filter [category]="category"></app-product-filter>
+  </div>
+
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let p of filterdProducts; let i = index">
+        <div class="col-sm-6">
+          <app-product-card
+            [product]="p"
+            [shopping-cart]="cart"
+          ></app-product-card>
+        </div>
+        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>

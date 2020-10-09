@@ -1,0 +1,26 @@
+<h2>Orders</h2>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>date</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of orders$ | async">
+      <td>{{ p.shipping.name }}</td>
+      <td>{{ p.shipping.addressLine1 }}</td>
+      <td>{{ p.shipping.addressLine2 }}</td>
+      <td>{{ p.shipping.city }}</td>
+      <td>{{ p.datePlaced | date }}</td>
+      <td>
+        <a [routerLink]="['/admin/orders/' + p.key]"> View</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
