@@ -11,15 +11,25 @@ import { switchMap } from 'rxjs/operators';
 })
 export class MyordersComponent implements OnInit {
   orders$;
-  id;
+  // id;
   constructor(
-    private OrderService: OrderService,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private orderService: OrderService
+    // private OrderService: OrderService,
+     private authService: AuthService,
+    // private route: ActivatedRoute,
+     private orderService: OrderService
   ) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.orders$ = orderService.getOrdersByUser(this.id);
+    // this.id = this.route.snapshot.paramMap.get('id');
+    // this.orders$ = orderService.getOrdersByUser(this.id);
+    // console.log(this.id);
+
+    
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.id);
+     this.orders$ = this.authService.user$
+      .pipe(switchMap(user => {
+        return this.orderService.getOrdersByUser(user.uid);
+      }));
+    
+  }
 }

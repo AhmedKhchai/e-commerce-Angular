@@ -41,8 +41,9 @@ export class OrderDetailsComponent implements OnInit {
     // this.cart$ = await this.shoppingCartService.getCart();
     // console.log(this.cart$);
 
-    this.orderService.getOrderById(this.id).subscribe((items) => {
-      this.items = items;
+    
+    this.orderService.getOrderById(this.id).subscribe((x) => {
+      this.items = x;
       console.log(this.items);
     });
     console.log(this.items);

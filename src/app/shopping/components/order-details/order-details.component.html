@@ -28,20 +28,34 @@
 
 <h1>Orders</h1>
 <table class="table">
-  <thead>
+  <!-- <thead>
     <tr>
       <th>product title</th>
       <th>quantity</th>
       <th></th>
     </tr>
-  </thead>
-  <tbody>
+  </thead> -->
+  <!-- <tbody>
     <tr>
-      <!-- <td>{{ items.product.title }}</td>
-      <td>{{ items.quantity }}</td> -->
+      <td>{{ items.product.title }}</td>
+      <td>{{ items.quantity }}</td> 
       <td></td>
     </tr>
-  </tbody>
+  </tbody> -->
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let item of items" class="list-group-item">
+      {{ item.quantity }} x {{ item.product.title }} -- {{ item.product.price }}
+      <div class="float-right">
+        {{ item.totalPrice | currency: "USD":true }}
+      </div>
+    </li>
+    <li class="list-group-item font-weight-bold">
+      Total
+      <div class="float-right">
+        <!-- {{ orders.totalPrice | currency: "USD":true }} -->
+      </div>
+    </li>
+  </ul>
 </table>
 
 <!-- <table class="table">

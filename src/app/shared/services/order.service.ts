@@ -4,6 +4,7 @@ import { shoppingCart } from '../interfaces/shopping-cart';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/internal/operators/map';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class OrderService {
 
   //   return result;
   // }
+    // private userId = new BehaviorSubject<string>()
 
   async placeOrder(order) {
     let result = this.db.list('/orders').push(order);
@@ -41,12 +43,18 @@ export class OrderService {
       );
   }
   getOrdersByUser(userId: string) {
-    return this.db
-      .list('/order', (query) => query.orderByChild('userId').equalTo(userId))
-      .valueChanges();
+   return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId))
+      .snapshotChanges().pipe(map(data => {
+        return data.map(action => {
+          const $key = action.payload.key;
+          const data = { $key, ...action.payload.val };
+          return data;
+        });
+      }));
   }
   getOrderById(orderId: string) {
-    return this.db.object('/order/' + orderId + '/items').valueChanges();
+    return this.db.object('/orders/' + orderId + '/items').valueChanges();
+    
     // .valueChanges()
     // .subscribe((res) => {
     //   console.log(res);

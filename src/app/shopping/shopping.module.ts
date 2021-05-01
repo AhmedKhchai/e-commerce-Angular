@@ -35,7 +35,7 @@ import { CommonModule } from '@angular/common';
       { path: 'shopping-cart', component: ShoppingCartComponent },
 
       {
-        path: 'my/orders',
+        path: 'my/orders/:id',
         component: MyordersComponent,
         canActivate: [AuthGuardService],
       },
