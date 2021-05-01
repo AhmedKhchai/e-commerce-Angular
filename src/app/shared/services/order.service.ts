@@ -43,14 +43,16 @@ export class OrderService {
       );
   }
   getOrdersByUser(userId: string) {
-   return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId))
-      .snapshotChanges().pipe(map(data => {
-        return data.map(action => {
-          const $key = action.payload.key;
-          const data = { $key, ...action.payload.val };
-          return data;
-        });
-      }));
+   return this.db.list<Order>('/orders', ref => ref.orderByChild('userId').equalTo(userId))
+     .snapshotChanges()
+      .pipe(
+        map((changes) => {
+          return changes.map((c) => ({
+            key: c.payload.key,
+            ...c.payload.val(),
+          }));
+        })
+      );
   }
   getOrderById(orderId: string) {
     return this.db.object('/orders/' + orderId + '/items').valueChanges();
