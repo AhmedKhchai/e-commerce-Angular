@@ -51,6 +51,7 @@
       <th>Address 2</th>
       <th>City</th>
       <th>date</th>
+      <th>Total price</th>
       <th>Details</th>
     </tr>
   </thead>
@@ -62,7 +63,8 @@
       <td>{{ p.shipping.addressLine2 }}</td>
       <td>{{ p.shipping.city }}</td>
       <td>{{ p.datePlaced | date }}</td>
-      <td>
+      <td>{{ p.totalPrice }}</td>
+<td>
         <a [routerLink]="['/my/orders/' + p.key]"> View</a>
       </td>
     </tr>

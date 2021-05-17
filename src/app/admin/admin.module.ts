@@ -12,11 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { OrderDetailsComponent } from '../shopping/components/order-details/order-details.component';
 
+
 @NgModule({
   declarations: [
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,11 @@ import { OrderDetailsComponent } from '../shopping/components/order-details/orde
       },
     ]),
   ],
+  
 
   providers: [AdminAuthGuardService],
+  
 })
+
 export class AdminModule {}
+

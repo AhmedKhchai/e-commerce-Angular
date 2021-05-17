@@ -44,15 +44,10 @@
   </tbody> -->
   <ul class="list-group list-group-flush">
     <li *ngFor="let item of items" class="list-group-item">
-      {{ item.quantity }} x {{ item.product.title }} -- {{ item.product.price }}
+
+     <img class ="prodimg" src={{item.product.imageUrl}}> {{ item.quantity }} x {{ item.product.title }} = {{ item.product.price * item.quantity | currency }}
       <div class="float-right">
-        {{ item.totalPrice | currency: "USD":true }}
-      </div>
-    </li>
-    <li class="list-group-item font-weight-bold">
-      Total
-      <div class="float-right">
-        <!-- {{ orders.totalPrice | currency: "USD":true }} -->
+        
       </div>
     </li>
   </ul>
